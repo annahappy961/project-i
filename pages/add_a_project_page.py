@@ -27,7 +27,6 @@ class AddAProjectPage(Page):
             actual_value = self.get_input_value(locator)
             assert actual_value == expected_values[
                 field], f"Expected {field}: {expected_values[field]}, Actual {field}: {actual_value}"
-            print(actual_value)
 
     def verify_application_button_clickable(self):
         self.wait_element_clickable(*self.SEND_APPLICATION_BTN)
