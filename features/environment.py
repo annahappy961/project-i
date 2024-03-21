@@ -21,13 +21,13 @@ def browser_init(context):
     """
     :param context: Behave context
     """
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
-
-    # driver_path = GeckoDriverManager().install()
+    # driver_path = ChromeDriverManager().install()
     # service = Service(driver_path)
-    # context.driver = webdriver.Firefox(service=service)
+    # context.driver = webdriver.Chrome(service=service)
+
+    driver_path = GeckoDriverManager().install()
+    service = Service(driver_path)
+    context.driver = webdriver.Firefox(service=service)
 
     ## BROWSERS WITH DRIVERS: provide path to the driver file ###
     # service = Service(executable_path='/Users/svetlanalevinsohn/careerist/17-python-selenium-automation/geckodriver')
@@ -36,7 +36,7 @@ def browser_init(context):
     ### SAFARI ###
     # context.driver = webdriver.Safari()
 
-    ### HEADLESS MODE ####
+    ## HEADLESS MODE ####
     # options = webdriver.ChromeOptions()
     # options.add_argument('headless')
     # service = Service(ChromeDriverManager().install())

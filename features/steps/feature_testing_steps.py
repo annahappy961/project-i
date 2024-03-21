@@ -1,9 +1,14 @@
 from behave import given, when, then
 
 
-@given("Open the main page")
-def open_main_page(context):
-    context.app.main_page.open_main()
+@given("Open Sign In page")
+def open_sign_in_page(context):
+    context.app.sign_in_page.open_sign_in_page()
+
+
+@when("Log in to the existing account: {username} and {password}")
+def login_to_existing_account(context, username, password):
+    context.app.sign_in_page.log_in_to_existing_account(username, password)
 
 
 @when("Click on settings option")
@@ -29,9 +34,9 @@ def add_test_information(context, name, phone_number, email):
 @then("Verify the correct information is present in the input fields")
 def verify_test_information_entered_correct(context):
     expected_values = {
-        "Your-name": "anna14",
+        "Your-name": "test16",
         "Phone": "123",
-        "Email-add-project": "anna14@gmail.com"
+        "Email-add-project": "test16@gmail.com"
     }
     context.app.add_a_project_page.verify_test_information_entered_correct(expected_values)
 
