@@ -1,3 +1,4 @@
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from time import sleep
 
@@ -10,5 +11,6 @@ class MenuBlock(Page):
     SETTINGS_BTN = (By.XPATH, "//a[contains(@href, '/settings') and contains(., 'Settings')]")
 
     def click_settings(self):
-        sleep(5)
+        sleep(50)
+        self.wait.until(EC.visibility_of_element_located(self.SETTINGS_BTN), f"Element is not visible")
         self.wait_element_clickable_click(*self.SETTINGS_BTN)
