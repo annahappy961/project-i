@@ -19,8 +19,19 @@ class Page:
         return self.driver.find_element(*locator)
 
     def input_text(self, locator, text):
-        element = self.driver.find_element(*locator)
-        element.send_keys(text)
+        try:
+            element = self.wait.until(
+                EC.visibility_of_element_located(locator),
+                f"Element by {locator} is not found"
+            )
+            element.send_keys(text)
+        except StaleElementReferenceException:
+            # If element reference becomes stale, locate the element again
+            element = self.wait.until(
+                EC.visibility_of_element_located(locator),
+                f"Stale element reference: Element by {locator} is not found"
+            )
+            element.send_keys(text)
 
     def get_input_value(self, locator):
         get_attribute = self.driver.find_element(*locator).get_attribute("value")
