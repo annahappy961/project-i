@@ -2,7 +2,7 @@ Feature: Feature testing
 
   Scenario: User can add a project through the settings
     Given Open Sign In page
-    When Log in to the existing account:  and 
+    When Log in to the existing account: zarubina.anna.qa@gmail.com and WubNv92HAuZ3Xk!
     When Click on settings option
     And Click on Add a project
     Then Verify URL has add-a-project
