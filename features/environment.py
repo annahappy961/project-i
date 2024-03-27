@@ -11,26 +11,26 @@ from app.application import Application
 
 
 #  Run Behave tests with Allure results
-#  behave -f allure_behave.formatter:AllureFormatter -o test_results/ features/tests/main_page_ui.feature
+# behave -f allure_behave.formatter:AllureFormatter -o test_results/ features/tests/main_page_ui.feature
 
 
-# def browser_init(context):
-#     """
-#     Initialize the web driver for the tests.
-#     :param context: Behave context
-#     """
+def browser_init(context):
+    """
+    Initialize the web driver for the tests.
+    :param context: Behave context
+    """
 
 ### BROWSERSTACK ###
-def browser_init(context, scenario_name):
-    """
-        Initialize the web driver for the tests.
-        :param context: Behave context
-        :param scenario_name: Name of the scenario
-        """
+# def browser_init(context, scenario_name):
+#     """
+#         Initialize the web driver for the tests.
+#         :param context: Behave context
+#         :param scenario_name: Name of the scenario
+#         """
 
-    # driver_path = ChromeDriverManager().install()
-    # service = Service(driver_path)
-    # context.driver = webdriver.Chrome(service=service)
+    driver_path = ChromeDriverManager().install()
+    service = Service(driver_path)
+    context.driver = webdriver.Chrome(service=service)
 
     # driver_path = GeckoDriverManager().install()
     # service = Service(driver_path)
@@ -54,19 +54,19 @@ def browser_init(context, scenario_name):
 
     ### BROWSERSTACK ###
     # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
-    bs_user = ''
-    bs_key = ''
-    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-
-    options = Options()
-    bstack_options = {
-        'os': 'Windows',
-        'osVersion': '10',
-        'browserName': 'Edge',
-        'sessionName': scenario_name
-    }
-    options.set_capability('bstack:options', bstack_options)
-    context.driver = webdriver.Remote(command_executor=url, options=options)
+    # bs_user = ''
+    # bs_key = ''
+    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    #
+    # options = Options()
+    # bstack_options = {
+    #     'os': 'Windows',
+    #     'osVersion': '10',
+    #     'browserName': 'Edge',
+    #     'sessionName': scenario_name
+    # }
+    # options.set_capability('bstack:options', bstack_options)
+    # context.driver = webdriver.Remote(command_executor=url, options=options)
 
     context.driver.maximize_window()
 
@@ -85,9 +85,9 @@ def before_scenario(context, scenario):
 
 
 ### BROWSERSTACK ###
-def before_scenario(context, scenario):
-    print('\nStarted scenario: ', scenario.name)
-    browser_init(context, scenario.name)
+# def before_scenario(context, scenario):
+#     print('\nStarted scenario: ', scenario.name)
+#     browser_init(context, scenario.name)
 
 
 def before_step(context, step):
