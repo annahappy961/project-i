@@ -15,8 +15,8 @@ class SignUpPage(Page):
     COMPANY_SIZE_DROPDOWN = (By.ID, "Agents-amount-2")
     READ_ACCEPT_CHECKBOX = (By.ID, "checkbox")
 
-    def open_sign_up_page(self):
-        self.open(" https://soft.reelly.io/sign-up")
+    def open_sign_up_page(self, url):
+        self.open(url)
 
     # def enter_information_into_input_fields(self):
     #     self.input_text("Test Full Name", *self.FIRS_LAST_NAME_FIELD)

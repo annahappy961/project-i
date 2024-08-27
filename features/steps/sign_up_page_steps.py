@@ -16,9 +16,9 @@ from behave import given, when, then
 #     context.app.sign_up_page.verify_details_display_correctly()
 #
 
-@given('Open the Sign up page')
-def open_sign_up_page(context):
-    context.app.sign_up_page.open_sign_up_page()
+@given('Open the Sign up page {url}')
+def open_sign_up_page(context, url):
+    context.app.sign_up_page.open_sign_up_page(url)
 
 
 @when(

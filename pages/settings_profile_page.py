@@ -6,7 +6,11 @@ from pages.base_page import Page
 
 class SettingsProfilePage(Page):
     ADD_PROJECT_LINK_TEXT = (By.CSS_SELECTOR, "[class*='block-menu'] [href*='project']")
+    CONTACT_US_LINK_TEXT = (By.CSS_SELECTOR, ".settings-block-menu [href='/contact-us']")
 
     def click_add_project(self):
-        sleep(5)
+        sleep(10)
         self.wait_element_clickable_click(*self.ADD_PROJECT_LINK_TEXT)
+
+    def click_contact_us(self):
+        self.wait_element_clickable_click(*self.CONTACT_US_LINK_TEXT)

@@ -76,8 +76,8 @@ def browser_init(context):
     ### HEADLESS MODE ####
     # context.driver.set_window_size(1024, 768)
 
-    context.driver.implicitly_wait(10)
-    context.wait = WebDriverWait(context.driver, 15)
+    context.driver.implicitly_wait(20)
+    context.wait = WebDriverWait(context.driver, 20)
     context.app = Application(context.driver)
 
 

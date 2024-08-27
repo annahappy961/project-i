@@ -1,7 +1,8 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.ui import Select
-from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException, TimeoutException
+from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException, TimeoutException, \
+    ElementNotVisibleException
 from time import sleep
 
 from support.logger import logger
@@ -73,14 +74,14 @@ class Page:
             # Catch other exceptions that may occur, potentially related to Select handling
             raise Exception(f"An error occurred while trying to retrieve the dropdown value: {e}")
 
-    def wait_element_clickable(self, locator):
+    def wait_element_clickable(self, *locator):
         self.wait.until(
-            EC.element_to_be_clickable(*locator),
+            EC.element_to_be_clickable(locator),
             message=f"Element by {locator} is not clickable"
         )
         logger.info(f"Element with locator {locator} is clickable")
 
-    def wait_element_clickable_click(self, locator):
+    def wait_element_clickable_click(self, *locator):
         self.wait.until(
             EC.element_to_be_clickable(locator),
             message=f"Element by {locator} not clickable"
@@ -89,7 +90,7 @@ class Page:
 
     def is_checkbox_selected(self, *locator):
         checkbox_element = self.driver.find_element(*locator)
-        assert checkbox_element.is_selected() == True, f"Checkbox needs to selected!"
+        assert checkbox_element.is_selected(), f"Checkbox needs to selected!"
 
     def verify_element_value(self, expected_value, *locator):
         try:
@@ -109,3 +110,21 @@ class Page:
         assert expected_partial_url in actual_url, \
             f"Expected {expected_partial_url} not in {actual_url}"
         logger.info(f"Verified partial URL: Expected '{expected_partial_url}' found in actual URL: '{actual_url}'")
+
+    # def verify_text(self, expected_text, *locator):
+    #     actual_text = self.find_element(*locator).text
+    #     assert expected_text in actual_text, \
+    #         f"Expected {expected_text} but got {actual_text}"
+    #     logger.info(f"Verified text '{actual_text}' on element with locator {locator}")
+
+    def verify_text(self, expected_text, locator):
+        elements = self.driver.find_elements(*locator)
+        if not elements:  # Check if the list of elements is empty
+            error_msg = f"No elements found with locator {locator}."
+            logger.error(error_msg)
+            raise AssertionError(error_msg)
+
+        for element in elements:
+            actual_text = element.text
+            assert actual_text == expected_text, f"Expected text '{expected_text}' but found '{actual_text}' for locator {locator}"
+            logger.info(f"Verified text '{actual_text}' on element with locator {locator}")

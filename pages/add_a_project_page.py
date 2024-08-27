@@ -13,9 +13,9 @@ class AddAProjectPage(Page):
         self.verify_partial_url(expected_part_url)
 
     def add_test_information(self, name, phone_number, email):
-        self.input_text(self.YOUR_NAME_FIELD, name)
-        self.input_text(self.PHONE_FIELD, phone_number)
-        self.input_text(self.EMAIL_FIELD, email)
+        self.input_text(name, *self.YOUR_NAME_FIELD)
+        self.input_text(phone_number, *self.PHONE_FIELD)
+        self.input_text(email, *self.EMAIL_FIELD)
 
     def verify_test_information_entered_correct(self, expected_values):
         required_fields = {
