@@ -1,6 +1,6 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
@@ -28,7 +28,10 @@ def browser_init(context):
 #         :param scenario_name: Name of the scenario
 #         """
 
-    driver_path = ChromeDriverManager().install()
+    # 1: driver_path = ChromeDriverManager().install()
+    # fix for error: HOOK-ERROR in before_scenario: OSError: [WinError 193] %1 is not a valid Win32 application
+    # 1 was changed to this
+    driver_path = './chromedriver.exe'
     service = Service(driver_path)
     context.driver = webdriver.Chrome(service=service)
 
