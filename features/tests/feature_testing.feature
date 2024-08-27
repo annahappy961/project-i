@@ -2,7 +2,7 @@ Feature: Feature testing
 
 #  Scenario: User can add a project through the settings
 #    Given Open Sign In page https://soft.reelly.io/sign-in
-#    When Log in to the existing account: zarubina.anna.qa@gmail.com and WubNv92HAuZ3Xk!
+#    When Log in to the existing account: and 
 #    When Click on settings option
 #    And Click on Add a project
 #    Then Verify URL has add-a-project
@@ -12,7 +12,7 @@ Feature: Feature testing
 
   Scenario: User can open the Contact us page
     Given Open Main page https://soft.reelly.io
-    When Log in to the existing account: zarubina.anna.qa@gmail.com and WubNv92HAuZ3Xk!
+    When Log in to the existing account:  and 
     When Click on settings option
     When Click on Contact Us
     Then Verify URL has contact-us
