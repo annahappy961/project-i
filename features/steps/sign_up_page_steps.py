@@ -14,7 +14,7 @@ from behave import given, when, then
 # @then('Verify the system displays the entered details exactly as provided')
 # def verify_information_in_input_fields(context):
 #     context.app.sign_up_page.verify_details_display_correctly()
-#
+
 
 @given('Open the Sign up page {url}')
 def open_sign_up_page(context, url):
