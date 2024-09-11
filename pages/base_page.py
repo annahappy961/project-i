@@ -88,6 +88,16 @@ class Page:
         ).click()
         logger.info(f"Clicked on element with locator {locator}")
 
+    def switch_to_new_tab(self, *locator):
+        original_page = self.driver.current_window_handle
+        old_windows = set(self.driver.window_handles)
+        self.wait_element_clickable_click(*locator)
+        WebDriverWait(self.driver, 10).until(
+            lambda driver: len(set(driver.window_handles) - old_windows) > 0
+        )
+        new_window = next(iter(set(self.driver.window_handles) - old_windows))
+        self.driver.switch_to.window(new_window)
+
     def is_checkbox_selected(self, *locator):
         checkbox_element = self.driver.find_element(*locator)
         assert checkbox_element.is_selected(), f"Checkbox needs to selected!"

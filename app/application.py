@@ -1,6 +1,7 @@
 from pages.base_page import Page
 from pages.add_a_project_page import AddAProjectPage
 from pages.contact_us_page import ContactUsPage
+from pages.connect_the_company_tab import ConnectTheCompanyTab
 from pages.main_page import MainPage
 from pages.menu_block import MenuBlock
 from pages.settings_profile_page import SettingsProfilePage
@@ -13,6 +14,7 @@ class Application:
         self.pages = Page(driver)
         self.add_a_project_page = AddAProjectPage(driver)
         self.contact_us_page = ContactUsPage(driver)
+        self.connect_the_company_tab = ConnectTheCompanyTab(driver)
         self.main_page = MainPage(driver)
         self.menu_block = MenuBlock(driver)
         self.settings_profile_page = SettingsProfilePage(driver)

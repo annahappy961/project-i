@@ -10,10 +10,16 @@ Feature: Feature testing
 #    Then Verify the correct information is present in the input fields
 #    And  Verify “Send an application” button is available and clickable
 
-  Scenario: User can open the Contact us page
+#  Scenario: User can open the Contact us page
+#    Given Open Main page https://soft.reelly.io
+#    When Log in to the existing account:
+#    When Click on settings option
+#    When Click on Contact Us
+#    Then Verify URL has contact-us
+#    And Verify Use this email: is seen
+
+  Scenario: The user can click on “Connect the company” on the left side of the main page
     Given Open Main page https://soft.reelly.io
-    When Log in to the existing account:  and
-    When Click on settings option
-    When Click on Contact Us
-    Then Verify URL has contact-us
-    And Verify Use this email: is seen
+    When Log in to the existing account:
+    And Click on “Connect the company” and switch the new tab
+    Then Verify connect the company URL has book-presentation

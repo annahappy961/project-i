@@ -36,6 +36,11 @@ def add_test_information(context, name, phone_number, email):
     context.app.add_a_project_page.add_test_information(name, phone_number, email)
 
 
+@when("Click on “Connect the company” and switch the new tab")
+def click_connect_the_company_and_switch_to_new_tab(context):
+    context.app.connect_the_company_tab.click_connect_the_company_and_switch_to_new_tab()
+
+
 @then("Verify URL has {expected_part_url}")
 def verify_right_page_url(context, expected_part_url):
     context.app.add_a_project_page.verify_right_page_url(expected_part_url)
@@ -59,3 +64,8 @@ def verify_application_button_clickable(context):
 @then("Verify {expected_text} is seen")
 def verify_expected_text(context, expected_text):
     context.app.contact_us_page.verify_text_present(expected_text)
+
+
+@then("Verify connect the company URL has {partial_url}")
+def verify_partial_url(context, partial_url):
+    context.app.connect_the_company_tab.verify_connect_the_company_tab_partial_url(partial_url)
