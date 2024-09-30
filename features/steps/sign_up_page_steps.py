@@ -29,6 +29,9 @@ def enter_information_into_input_fields(context, fullname, phone, email, passwor
                                                                  position, country, company_size)
 
 
-@then('Verify the system displays the entered details exactly as provided with {fullname}, {phone}, {email}, {password}, {website}, {role}, {position}, {country}, {company_size}')
-def verify_information_in_input_fields(context, fullname, phone, email, password, website, role, position, country, company_size):
-    context.app.sign_up_page.verify_details_display_correctly(fullname, phone, email, password, website, role, position, country, company_size)
+@then(
+    'Verify the system displays the entered details exactly as provided with {fullname}, {phone}, {email}, {password}, {website}, {role}, {position}, {country}, {company_size}')
+def verify_information_in_input_fields(context, fullname, phone, email, password, website, role, position, country,
+                                       company_size):
+    context.app.sign_up_page.verify_details_display_correctly(fullname, phone, email, password, website, role, position,
+                                                              country, company_size)

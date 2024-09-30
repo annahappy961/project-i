@@ -89,7 +89,7 @@ class Page:
         logger.info(f"Clicked on element with locator {locator}")
 
     def switch_to_new_tab(self, *locator):
-        original_page = self.driver.current_window_handle
+        # original_page = self.driver.current_window_handle
         old_windows = set(self.driver.window_handles)
         self.wait_element_clickable_click(*locator)
         WebDriverWait(self.driver, 10).until(

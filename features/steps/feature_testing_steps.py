@@ -41,6 +41,16 @@ def click_connect_the_company_and_switch_to_new_tab(context):
     context.app.connect_the_company_tab.click_connect_the_company_and_switch_to_new_tab()
 
 
+@when("Click on Edit profile option")
+def click_edit_profile(context):
+    context.app.settings_profile_page.click_edit_profile()
+
+
+@when("Enter the {language} language in the Languages input field")
+def enter_language(context, language):
+    context.app.edit_profile_page.enter_language(language)
+
+
 @then("Verify URL has {expected_part_url}")
 def verify_right_page_url(context, expected_part_url):
     context.app.add_a_project_page.verify_right_page_url(expected_part_url)
@@ -69,3 +79,17 @@ def verify_expected_text(context, expected_text):
 @then("Verify connect the company URL has {partial_url}")
 def verify_partial_url(context, partial_url):
     context.app.connect_the_company_tab.verify_connect_the_company_tab_partial_url(partial_url)
+
+
+@then("Verify the right language is present in the input field: {language}")
+def verify_entered_language_displayed_correctly(context, language):
+    context.app.edit_profile_page.verify_language_displayed(language)
+
+
+@then("Verify “Close” and “Save Changes” buttons are available and clickable")
+def verify_close_button_clickable(context):
+    context.app.edit_profile_page.verify_close_button_clickable()
+
+
+def verify_save_changes_button_clickable(context):
+    context.app.edit_profile_page.verify_save_button_clickable()
